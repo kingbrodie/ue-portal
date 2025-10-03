@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Portal - Admission Application</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'portal-red': '#B31B1B',
+                        'portal-light-red': '#E53935',
+                        'portal-gray': '#f5f5f5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f7f7; min-height: 1024px; }
+        .hero-red-bg {
+            background-color: #B31B1B;
+            background-image: url('https://placehold.co/1200x400/800000/ffffff?text=Admission+Hero+Background');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header & Navigation - Larger for Kiosk Touch Targets -->
+    <header class="bg-white shadow-xl">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="./index.html" class="text-2xl font-bold text-portal-red hover:underline">Portal Home</a>
+            </div>
+            <nav class="space-x-4 sm:space-x-8 flex text-lg font-medium">
+                <a href="./library.html" class="text-gray-600 hover:text-portal-red transition py-2 px-4 rounded-lg hover:bg-portal-gray">Library</a>
+                <a href="./admission.html" class="text-portal-red border-b-4 border-portal-red font-bold py-2 px-4 rounded-lg bg-portal-gray">Admission</a>
+                <a href="./payments.html" class="text-gray-600 hover:text-portal-red transition py-2 px-4 rounded-lg hover:bg-portal-gray">Payments</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Content Card Area -->
+    <main class="max-w-5xl mx-auto p-6 sm:p-8 lg:p-12">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 sm:p-12 lg:p-16 border-t-10 border-portal-red">
+            
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-portal-red mb-3 text-center">
+                Welcome to the Enrollment Portal
+            </h1>
+            <p class="text-center text-gray-600 mb-10 text-xl">
+                Thank you for your interest in becoming a <span class="font-bold">Warrior Student!</span>
+            </p>
+
+            <!-- Main Admission Grid (Kiosk Responsive) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                
+                <!-- Left Side: STEP 1: Application Form -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-3"><span class="text-portal-red">STEP 1:</span> Application Form</h2>
+                    
+                    <form onsubmit="event.preventDefault(); submitApplication()">
+                        <!-- Input Field Group 1 - Larger -->
+                        <div class="mb-6">
+                            <label for="applyFor" class="block text-xl font-medium text-gray-700 mb-2">Apply for:</label>
+                            <select id="applyFor" class="w-full p-4 border-2 border-gray-300 rounded-xl text-lg focus:ring-portal-red focus:border-portal-red">
+                                <option>College</option>
+                                <option>Senior High School</option>
+                                <option>Graduate Studies</option>
+                            </select>
+                        </div>
+
+                        <!-- Input Field Group 2 - Larger -->
+                        <div class="mb-8">
+                            <label for="program" class="block text-xl font-medium text-gray-700 mb-2">Desired Program:</label>
+                            <input type="text" id="program" placeholder="e.g., BS Computer Science" class="w-full p-4 border-2 border-gray-300 rounded-xl text-lg focus:ring-portal-red focus:border-portal-red" required>
+                        </div>
+                        
+                        <!-- Main Action Button - Largest Touch Target -->
+                        <button type="submit" class="w-full bg-portal-red text-white py-5 rounded-xl font-bold text-2xl hover:bg-portal-light-red transition duration-200 shadow-xl">
+                            Register to Apply
+                        </button>
+                    </form>
+
+                    <!-- Application Tracking Section - Larger Font and Buttons -->
+                    <div class="mt-10 pt-8 border-t border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Track/Modify Application</h3>
+                        <p class="text-base text-gray-600 mb-5">
+                            To modify your application form and upload your proof of payment, please enter your reference number and last name below.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="refNo" class="block text-lg font-medium text-gray-700 mb-1">Reference No.:</label>
+                                <input type="text" id="refNo" placeholder="Reference Number" class="w-full p-4 border-2 border-gray-300 rounded-xl text-lg" required>
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-lg font-medium text-gray-700 mb-1">Last Name:</label>
+                                <input type="text" id="lastName" placeholder="Last Name" class="w-full p-4 border-2 border-gray-300 rounded-xl text-lg" required>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Action Buttons - Larger Touch Targets -->
+                        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 mt-6">
+                            <button onclick="checkStatus()" class="flex-1 bg-yellow-500 text-white py-3 rounded-xl text-lg font-semibold hover:bg-yellow-600 transition shadow-md">Check Status</button>
+                            <button onclick="uploadProof()" class="flex-1 bg-green-500 text-white py-3 rounded-xl text-lg font-semibold hover:bg-green-600 transition shadow-md">Upload Proof of Payment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Enrollment Status & Steps - Larger Text and Padding -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-3"><span class="text-portal-red">STEPS 2-4:</span> Enrollment Status & Requirements</h2>
+                    
+                    <div class="space-y-8">
+                        <!-- Step 2 -->
+                        <div class="p-6 bg-portal-gray rounded-xl shadow-inner border-l-4 border-portal-light-red">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">STEP 2: Academic Credentials</h3>
+                            <ul class="list-disc list-inside text-gray-700 text-lg ml-4 space-y-1">
+                                <li>Update Personal Information</li>
+                                <li>Submission of Enrollment Credentials</li>
+                            </ul>
+                            <div class="mt-4 text-portal-red font-semibold text-lg">
+                                <a href="#" onclick="alertMessage('Viewing Pre-Enrollment Form...')">&#8594; View Pre-Enrollment Form (PEF)</a>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="p-6 bg-portal-gray rounded-xl shadow-inner border-l-4 border-portal-light-red">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">STEP 3: Payment of Fees</h3>
+                            <ul class="list-disc list-inside text-gray-700 text-lg ml-4 space-y-1">
+                                <li>Payment Procedures (See link below)</li>
+                                <li><span class="text-portal-red font-semibold">Download Registration Form</span> (after payment)</li>
+                            </ul>
+                            <a href="./payments.html" class="mt-4 text-portal-red font-semibold text-lg block">&#8594; View Payment Options</a>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="p-6 bg-portal-gray rounded-xl shadow-inner border-l-4 border-portal-light-red">
+                            <h3 class="font-bold text-2xl text-gray-800 mb-2">STEP 4: UE Student Portal Access</h3>
+                            <p class="text-gray-700 text-lg mt-2">
+                                Access your official student portal credentials after completing all previous steps.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Privacy Statement -->
+            <div class="mt-12 pt-8 border-t border-gray-200 text-center">
+                <a href="#" class="text-lg text-gray-500 hover:text-portal-red hover:underline" onclick="alertMessage('Viewing Data Privacy Statement...')">
+                    UE Data Privacy Statement
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer - Larger for Kiosk -->
+    <footer class="bg-gray-800 text-white p-6 text-center text-lg">
+        &copy; 2024 University Portal - Admission.
+    </footer>
+
+    <script>
+        function alertMessage(message) {
+            console.log("Portal Message:", message);
+            const notification = document.createElement('div');
+            // Ensure alert message is also larger
+            notification.innerHTML = `<div class="fixed top-4 right-4 bg-portal-red text-white p-6 rounded-lg shadow-xl z-50 text-xl font-semibold">${message}</div>`;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        function submitApplication() {
+            alertMessage("Application Registered! Please proceed to Step 2-4 on the right side.");
+        }
+
+        function checkStatus() {
+            const refNo = document.getElementById('refNo').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            if (refNo && lastName) {
+                alertMessage(`Checking status for Ref No: ${refNo}, Name: ${lastName}...`);
+            } else {
+                alertMessage("Please fill in both Reference No. and Last Name.");
+            }
+        }
+
+        function uploadProof() {
+            alertMessage("Opening file upload modal. You can upload your proof of payment here.");
+        }
+    </script>
+</body>
+</html>

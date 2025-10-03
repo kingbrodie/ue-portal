@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Portal - Payments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'portal-red': '#B31B1B',
+                        'portal-light-red': '#E53935',
+                        'portal-gray': '#f5f5f5',
+                        'pnb-red': '#A80026', /* Specific color from PNB logo */
+                        'gcash-blue': '#00A0E3', /* Specific color from GCash logo */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f7f7; min-height: 1024px; }
+        .option-header {
+            background-color: #B31B1B;
+            color: white;
+            padding: 2rem; /* Increased padding */
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .option-header h2 {
+            font-size: 2.5rem; /* 4xl */
+            font-weight: 700;
+        }
+        .option-header p {
+            font-size: 1.5rem; /* 2xl */
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header & Navigation - Larger for Kiosk Touch Targets -->
+    <header class="bg-white shadow-xl">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="./index.html" class="text-2xl font-bold text-portal-red hover:underline">Portal Home</a>
+            </div>
+            <nav class="space-x-4 sm:space-x-8 flex text-lg font-medium">
+                <a href="./library.html" class="text-gray-600 hover:text-portal-red transition py-2 px-4 rounded-lg hover:bg-portal-gray">Library</a>
+                <a href="./admission.html" class="text-gray-600 hover:text-portal-red transition py-2 px-4 rounded-lg hover:bg-portal-gray">Admission</a>
+                <a href="./payments.html" class="text-portal-red border-b-4 border-portal-red font-bold py-2 px-4 rounded-lg bg-portal-gray">Payments</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-6 sm:p-8 lg:p-12">
+        <h1 class="text-5xl font-extrabold text-gray-800 mb-10 text-center border-b-4 border-portal-red pb-4">
+            Options to Pay Your School Fees
+        </h1>
+
+        <!-- Option 1: PNB Bills Payment - Larger Text/Padding -->
+        <section class="mb-12 bg-white p-8 rounded-2xl shadow-xl">
+            <div class="option-header bg-pnb-red/90 mb-8">
+                <span class="text-5xl font-bold mr-6">Option 1</span>
+                <div>
+                    <h2>UE Payment Option</h2>
+                    <p class="text-2xl font-light">PNB Bills Payment (Recommended)</p>
+                </div>
+            </div>
+            <div class="space-y-4 text-gray-700 text-xl">
+                <p class="font-bold">Pay through PNB Mobile App / Internet Banking:</p>
+                <ol class="list-decimal list-inside ml-6 space-y-3 text-lg">
+                    <li>Log in to your PNB mobile application or online service.</li>
+                    <li>Select the <span class="font-semibold">"Bills Payment"</span> option.</li>
+                    <li>Search for <span class="font-semibold">"UNIVERSITY OF THE EAST"</span> as the Biller.</li>
+                    <li>Input your <span class="font-semibold">Student Number</span> as the Subscriber Number.</li>
+                    <li>Enter the Amount and confirm the payment.</li>
+                    <li>Save a copy of your proof of payment (screenshot/transaction slip) and email it to the University Finance Office.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Option 2: Mobile Banking Applications (Other Banks) - Larger Text/Padding -->
+        <section class="mb-12 bg-white p-8 rounded-2xl shadow-xl">
+            <div class="option-header bg-portal-red/90 mb-8">
+                <span class="text-5xl font-bold mr-6">Option 2</span>
+                <div>
+                    <h2>Bills Payment through</h2>
+                    <p class="text-2xl font-light">Mobile Banking Applications (BDO, Metrobank, BPI, etc.)</p>
+                </div>
+            </div>
+            <div class="space-y-4 text-gray-700 text-xl">
+                <p class="font-bold">Via FUND TRANSFER (Metrobank, BPI, BDO, etc.):</p>
+                <ol class="list-decimal list-inside ml-6 space-y-3 text-lg">
+                    <li>Log in to your chosen bank's mobile application or online service.</li>
+                    <li>Select <span class="font-semibold">"Fund Transfer"</span> or <span class="font-semibold">"Send Money."</span></li>
+                    <li>Transfer to the University's designated bank account (Details at Finance Office).</li>
+                    <li><span class="font-bold text-portal-red">Crucial:</span> In the description/remarks field, input the Student's Full Name and Student Number.</li>
+                    <li>Email a clear copy of the successful transaction to the Finance email for confirmation.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Option 3: GCash Bills Payment - Larger Text/Padding -->
+        <section class="mb-12 bg-white p-8 rounded-2xl shadow-xl">
+            <div class="option-header bg-gcash-blue/90 mb-8">
+                <span class="text-5xl font-bold mr-6">Option 3</span>
+                <div>
+                    <h2>E-Wallet Payment</h2>
+                    <p class="text-2xl font-light">GCash Bills Payment</p>
+                </div>
+            </div>
+            <div class="space-y-4 text-gray-700 text-xl">
+                <p class="font-bold">GCash Bills Payment Steps:</p>
+                <ol class="list-decimal list-inside ml-6 space-y-3 text-lg">
+                    <li>Log in to your GCash mobile application.</li>
+                    <li>Select the <span class="font-semibold">"Bills"</span> icon, then choose <span class="font-semibold">"Schools."</span></li>
+                    <li>Search for <span class="font-bold text-gcash-blue">"UNIVERSITY OF THE EAST"</span> as the Biller.</li>
+                    <li>Enter the required details (Student Name, Student Number, Amount Due).</li>
+                    <li>Confirm the payment. Save the text/email confirmation and email it to the Finance Office.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Confirmation Section (Simulated Registration Number and Confirmation) - Larger Elements -->
+        <div class="mt-16 p-8 bg-portal-gray rounded-2xl border-4 border-portal-red text-center shadow-inner">
+            <h2 class="text-3xl font-bold text-portal-red mb-4">Payment Confirmation</h2>
+            <p class="text-xl text-gray-700 mb-6">
+                After a successful payment, you will receive a <span class="font-extrabold">Registration Number</span> and official receipt confirmation.
+            </p>
+            <button onclick="simulatePayment()" class="bg-portal-red text-white py-5 px-10 rounded-xl font-bold text-2xl hover:bg-portal-light-red transition duration-200 shadow-xl">
+                Simulate Payment & Get Confirmation
+            </button>
+            
+            <div id="confirmation-details" class="mt-8 p-6 border-2 border-gray-300 rounded-xl bg-white hidden">
+                <p class="text-left text-xl"><span class="font-bold">Transaction Status:</span> <span class="text-green-600 font-extrabold">SUCCESSFUL</span></p>
+                <p class="text-left mt-3 text-xl"><span class="font-bold">Registration Number:</span> <span class="text-portal-red font-extrabold">2024UE-12345678</span></p>
+                <p class="text-left text-base mt-3 text-gray-500">
+                    <span class="font-semibold">Important:</span> Please save this number and use it as proof of payment for all subsequent enrollment steps.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer - Larger for Kiosk -->
+    <footer class="bg-gray-800 text-white p-6 text-center text-lg">
+        &copy; 2024 University Portal - Payments.
+    </footer>
+
+    <script>
+        function alertMessage(message) {
+            console.log("Portal Message:", message);
+            const notification = document.createElement('div');
+            // Ensure alert message is also larger
+            notification.innerHTML = `<div class="fixed top-4 right-4 bg-portal-red text-white p-6 rounded-lg shadow-xl z-50 text-xl font-semibold">${message}</div>`;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        function simulatePayment() {
+            const confirmationDiv = document.getElementById('confirmation-details');
+            confirmationDiv.classList.remove('hidden');
+            confirmationDiv.scrollIntoView({ behavior: 'smooth' });
+            
+            alertMessage("Payment simulated! Registration Number generated above.");
+        }
+    </script>
+</body>
+</html>
