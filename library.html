@@ -131,6 +131,7 @@
           <p class="text-lg text-gray-500">Search results will appear here after you submit a query.</p>
         </div>
       </div>
+
     </main>
   </div>
 
@@ -141,7 +142,7 @@
 
   <!-- ================== MODALS ================== -->
 
-  <!-- Sidebar Related -->
+  <!-- Sidebar Modals -->
   <div id="ejournalModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
       <h2 class="text-2xl font-bold mb-4">📚 E-Journals (Online Access)</h2>
@@ -166,7 +167,7 @@
     </div>
   </div>
 
-  <!-- Service Cards -->
+  <!-- Service Card Modals -->
   <div id="virtualModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
       <h2 class="text-2xl font-bold mb-4">💻 Virtual Library Office</h2>
@@ -175,58 +176,131 @@
     </div>
   </div>
 
+  <!-- Curbside Pick-up Modal -->
   <div id="curbsideModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
       <h2 class="text-2xl font-bold mb-4">🚗 Curbside Pick-up</h2>
-      <form>
+      <form id="curbsideModalForm">
         <input type="text" placeholder="Book Title" class="w-full p-3 border mb-3 rounded" />
         <input type="text" placeholder="Student ID" class="w-full p-3 border mb-3 rounded" />
+
+        <p class="font-semibold mb-2">Select Pick-up Location:</p>
+        <div class="mb-3 space-y-2">
+          <label class="flex items-center space-x-2">
+            <input type="radio" name="pickupLocation" value="Gastambide Gate" class="form-radio" />
+            <span>Gastambide Gate (Manila Campus)</span>
+          </label>
+          <label class="flex items-center space-x-2">
+            <input type="radio" name="pickupLocation" value="Recto Gate" class="form-radio" />
+            <span>Recto Gate (Manila Campus)</span>
+          </label>
+          <label class="flex items-center space-x-2">
+            <input type="radio" name="pickupLocation" value="Samson Road Gate" class="form-radio" />
+            <span>Samson Road Gate (Caloocan Campus)</span>
+          </label>
+          <label class="flex items-center space-x-2">
+            <input type="radio" name="pickupLocation" value="Other" class="form-radio" id="otherPickupRadio" />
+            <span>Other</span>
+          </label>
+          <input type="text" id="otherPickupInput" placeholder="Specify Other Location" class="w-full p-3 border rounded mt-2 hidden" />
+        </div>
+
         <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg">Reserve</button>
       </form>
       <button onclick="closeModal('curbsideModal')" class="mt-3 bg-portal-red text-white px-4 py-2 rounded-lg">Close</button>
     </div>
   </div>
 
+  <!-- Digital Delivery Modal -->
   <div id="digitalModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
       <h2 class="text-2xl font-bold mb-4">📧 Digital Delivery</h2>
-      <form>
-        <input type="text" placeholder="Article/Book Chapter" class="w-full p-3 border mb-3 rounded" />
+      <p class="mb-4">Request scanned copies of specific articles or book chapters to be sent via email.</p>
+      <form id="digitalModalForm">
+        <input type="text" placeholder="Book Title / Article" class="w-full p-3 border mb-3 rounded" />
         <input type="email" placeholder="Your Email" class="w-full p-3 border mb-3 rounded" />
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Request</button>
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg">Request</button>
       </form>
       <button onclick="closeModal('digitalModal')" class="mt-3 bg-portal-red text-white px-4 py-2 rounded-lg">Close</button>
     </div>
   </div>
 
+  <!-- Book Request Form Modal -->
   <div id="requestModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
       <h2 class="text-2xl font-bold mb-4">📖 Book Request Form</h2>
-      <form>
+      <p class="mb-4">Submit a request for books or materials not yet available in the library.</p>
+      <form id="requestModalForm">
         <input type="text" placeholder="Book Title" class="w-full p-3 border mb-3 rounded" />
         <input type="text" placeholder="Author" class="w-full p-3 border mb-3 rounded" />
-        <button type="submit" class="bg-yellow-600 text-white px-4 py-2 rounded-lg">Submit</button>
+        <input type="text" placeholder="Your Name" class="w-full p-3 border mb-3 rounded" />
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg">Submit Request</button>
       </form>
       <button onclick="closeModal('requestModal')" class="mt-3 bg-portal-red text-white px-4 py-2 rounded-lg">Close</button>
     </div>
   </div>
 
-  <div id="appointmentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
-      <h2 class="text-2xl font-bold mb-4">📅 Book an Appointment</h2>
-      <form>
-        <input type="text" placeholder="Your Name" class="w-full p-3 border mb-3 rounded" />
-        <input type="datetime-local" class="w-full p-3 border mb-3 rounded" />
-        <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded-lg">Schedule</button>
-      </form>
-      <button onclick="closeModal('appointmentModal')" class="mt-3 bg-portal-red text-white px-4 py-2 rounded-lg">Close</button>
-    </div>
-  </div>
+ <!-- Book an Appointment Modal -->
+<div id="appointmentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
+    <h2 class="text-2xl font-bold mb-4">📅 Book an Appointment</h2>
+    <p class="mb-4">Schedule research consultation or dedicated library desk time.</p>
+    <form id="appointmentModalForm">
+      <input type="text" placeholder="Your Name" class="w-full p-3 border mb-3 rounded" />
+      <input type="email" placeholder="Your Email" class="w-full p-3 border mb-3 rounded" />
+      <input type="date" class="w-full p-3 border mb-3 rounded" />
+      <input type="time" class="w-full p-3 border mb-3 rounded" />
 
+      <p class="font-semibold mb-2">Select Location:</p>
+      <div class="mb-3 space-y-2">
+        <label class="flex items-center space-x-2">
+          <input type="radio" name="appointmentLocation" value="Podcit Building 2nd Floor" class="form-radio" />
+          <span>Podcit Building 2nd Floor</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="radio" name="appointmentLocation" value="Podcit Building 3rd Floor" class="form-radio" />
+          <span>Podcit Building 3rd Floor</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="radio" name="appointmentLocation" value="Podcit Building 4th Floor" class="form-radio" />
+          <span>Podcit Building 4th Floor</span>
+        </label>
+        <label class="flex items-center space-x-2">
+          <input type="radio" name="appointmentLocation" value="Lualhati Building 3rd Floor" class="form-radio" />
+          <span>Lualhati Building 3rd Floor</span>
+        </label>
+      </div>
+
+      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg">Book Appointment</button>
+    </form>
+    <button onclick="closeModal('appointmentModal')" class="mt-3 bg-portal-red text-white px-4 py-2 rounded-lg">Close</button>
+  </div>
+</div>
+
+
+  <!-- ================== SCRIPTS ================== -->
   <script>
-    function alertMessage(message) {
+    // Show/hide "Other" input for curbside pick-up safely
+    const otherRadio = document.getElementById('otherPickupRadio');
+    const otherInput = document.getElementById('otherPickupInput');
+
+    if (otherRadio && otherInput) {
+      otherRadio.addEventListener('change', () => { otherInput.classList.remove('hidden'); });
+      document.querySelectorAll('input[name="pickupLocation"]').forEach(radio => {
+        if (radio.id !== 'otherPickupRadio') {
+          radio.addEventListener('change', () => { otherInput.classList.add('hidden'); });
+        }
+      });
+    }
+
+    // Function to show notifications
+    function alertMessage(message, success = true) {
       const notification = document.createElement('div');
-      notification.innerHTML = `<div class="fixed top-4 right-4 bg-portal-red text-white p-6 rounded-lg shadow-xl z-50 text-xl font-semibold">${message}</div>`;
+      notification.innerHTML = `
+        <div class="fixed top-4 right-4 p-6 rounded-lg shadow-xl z-50 text-xl font-semibold
+                    ${success ? 'bg-green-600 text-white' : 'bg-red-600 text-white'}">
+          ${message}
+        </div>`;
       document.body.appendChild(notification);
       setTimeout(() => { notification.remove(); }, 3000);
     }
@@ -243,7 +317,7 @@
 
       if (query.length < 3) {
         resultsDiv.innerHTML = '<p class="text-xl text-red-500 font-semibold">Please enter at least 3 characters to search.</p>';
-        alertMessage("Please enter at least 3 characters to search.");
+        alertMessage("Please enter at least 3 characters to search.", false);
         return;
       }
 
@@ -261,7 +335,7 @@
 
       if (filteredBooks.length === 0) {
         resultsDiv.innerHTML = `<p class="text-lg text-gray-600">No results found for "<span class="font-bold">${query}</span>".</p>`;
-        alertMessage("No results found.");
+        alertMessage("No results found.", false);
         return;
       }
 
@@ -282,13 +356,27 @@
       resultsDiv.innerHTML = html;
     }
 
-    function openModal(id) {
-      document.getElementById(id).classList.remove("hidden");
+    function openModal(id) { document.getElementById(id).classList.remove("hidden"); }
+    function closeModal(id) { document.getElementById(id).classList.add("hidden"); }
+
+    // Handle form submissions with notifications
+    function handleFormSubmission(formId, successMessage) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alertMessage(successMessage, true);
+        form.reset();
+        const modal = form.closest('.hidden');
+        if (modal) modal.id && closeModal(modal.id);
+      });
     }
 
-    function closeModal(id) {
-      document.getElementById(id).classList.add("hidden");
-    }
+    handleFormSubmission('curbsideModalForm', 'Book reserved successfully!');
+    handleFormSubmission('digitalModalForm', 'Digital delivery request sent!');
+    handleFormSubmission('requestModalForm', 'Book request submitted!');
+    handleFormSubmission('appointmentModalForm', 'Appointment booked successfully!');
   </script>
 </body>
 </html>
