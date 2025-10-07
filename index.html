@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>University Portal - Main Navigation</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind Configuration for University Red and Inter Font
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'portal-red': '#B31B1B', // Deep Red
-                        'portal-light-red': '#E53935', // Brighter Red
+                        'portal-red': '#B31B1B',
+                        'portal-light-red': '#E53935',
                         'portal-gray': '#f5f5f5',
                     },
                     fontFamily: {
@@ -27,17 +25,14 @@
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #f7f7f7; 
-            /* Enforce minimum body size for common kiosk vertical resolutions */
             min-height: 1024px; 
         }
         .hero-section {
             position: relative;
             background-color: white;
             overflow: hidden;
-            padding-bottom: 7rem; /* Increased padding for kiosk visibility */
+            padding-bottom: 7rem;
         }
-
-        /* Geometric Slanted Red Background (Desktop/Kiosk) - Increased slant size */
         @media (min-width: 768px) {
             .hero-section::before {
                 content: '';
@@ -52,8 +47,6 @@
                 z-index: 1;
             }
         }
-
-        /* Mobile adaptation */
         @media (max-width: 767px) {
              .hero-section::before {
                 content: '';
@@ -69,30 +62,27 @@
                 padding-bottom: 2rem;
             }
         }
-
         .hero-content { position: relative; z-index: 2; }
     </style>
 </head>
 <body class="min-h-screen">
 
-    <!-- Header & Navigation - Larger for Kiosk Touch Targets -->
+    <!-- Header -->
     <header class="bg-white shadow-xl">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 <svg class="w-10 h-10 text-portal-red" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-8a1 1 0 002 0V7a1 1 0 10-2 0v3z" clip-rule="evenodd" /></svg>
                 <span class="text-2xl font-bold text-gray-800">University Portal</span>
             </div>
-
-            <!-- Primary Navigation Links (Larger text and padding) -->
             <nav class="space-x-4 sm:space-x-8 flex text-lg font-medium">
                 <a href="./library.html" class="text-gray-600 hover:text-portal-red transition duration-150 py-2 px-4 rounded-lg hover:bg-portal-gray">Library</a>
-                <a href="./admission.html" class="text-gray-600 hover:text-portal-red transition duration-150 py-2 px-4 rounded-lg hover:bg-portal-gray">Admission</a>
+                <a href="./admission.html" id="startAdmissionBtn" class="text-gray-600 hover:text-portal-red transition duration-150 py-2 px-4 rounded-lg hover:bg-portal-gray">Admission</a>
                 <a href="./payments.html" class="text-gray-600 hover:text-portal-red transition duration-150 py-2 px-4 rounded-lg hover:bg-portal-gray">Payments</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section - Significantly Larger Text and Padding -->
+    <!-- Hero Section -->
     <div class="hero-section py-24 lg:py-40 mb-10 shadow-lg">
         <div class="hero-content max-w-7xl mx-auto px-6 lg:px-12">
             <h1 class="text-6xl lg:text-8xl font-extrabold text-gray-800 mb-6 relative z-10 leading-tight">
@@ -102,24 +92,23 @@
                 Your integrated access point for academic resources, application tracking, and secure tuition payments.
             </p>
 
-            <!-- Quick Access Buttons - Maximize Touch Targets -->
+            <!-- Buttons -->
             <div class="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-8 relative z-10">
                 <a href="./library.html" class="bg-portal-red text-white py-6 px-12 rounded-xl text-xl font-bold shadow-2xl hover:bg-portal-light-red transition duration-300 transform hover:scale-105 text-center">
                     <span class="text-3xl mr-3">&#128214;</span> Explore Library
                 </a>
-                <a href="./admission.html" class="bg-white text-portal-red border-4 border-portal-red py-6 px-12 rounded-xl text-xl font-bold shadow-lg hover:bg-portal-gray transition duration-300 transform hover:scale-105 text-center">
+                <button id="openAdmissionModal" class="bg-white text-portal-red border-4 border-portal-red py-6 px-12 rounded-xl text-xl font-bold shadow-lg hover:bg-portal-gray transition duration-300 transform hover:scale-105 text-center">
                     <span class="text-3xl mr-3">&#128100;</span> Start Admission
-                </a>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Featured Sections (Kiosk-sized Grid) -->
+    <!-- Sections -->
     <main class="max-w-7xl mx-auto px-6 lg:px-12 pb-20">
         <h2 class="text-4xl font-bold text-gray-800 mb-10 text-center border-b pb-4">Essential Services</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
-            <!-- Feature 1: Library -->
             <a href="./library.html" class="group bg-white p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition duration-300 transform hover:-translate-y-2 text-center border-t-8 border-portal-red">
                 <div class="text-portal-red mb-4 text-6xl">📚</div>
                 <h3 class="text-2xl font-bold text-gray-800 group-hover:text-portal-red">Library & Resources</h3>
@@ -127,15 +116,13 @@
                 <span class="text-portal-red font-semibold mt-4 block text-lg">Go to Library &rarr;</span>
             </a>
 
-            <!-- Feature 2: Admission -->
-            <a href="./admission.html" class="group bg-white p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition duration-300 transform hover:-translate-y-2 text-center border-t-8 border-portal-red">
+            <button id="openAdmissionModal2" class="group bg-white p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition duration-300 transform hover:-translate-y-2 text-center border-t-8 border-portal-red w-full">
                 <div class="text-portal-red mb-4 text-6xl">📝</div>
                 <h3 class="text-2xl font-bold text-gray-800 group-hover:text-portal-red">Admission Application</h3>
                 <p class="text-gray-600 mt-3 text-base">Start, track, or modify your enrollment application for next term.</p>
                 <span class="text-portal-red font-semibold mt-4 block text-lg">Apply Now &rarr;</span>
-            </a>
+            </button>
 
-            <!-- Feature 3: Payments -->
             <a href="./payments.html" class="group bg-white p-8 rounded-2xl shadow-2xl hover:shadow-3xl transition duration-300 transform hover:-translate-y-2 text-center border-t-8 border-portal-red">
                 <div class="text-portal-red mb-4 text-6xl">💳</div>
                 <h3 class="text-2xl font-bold text-gray-800 group-hover:text-portal-red">Tuition Payments</h3>
@@ -145,11 +132,34 @@
         </div>
     </main>
 
-    <!-- Footer - Larger for Kiosk -->
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white p-8">
         <div class="max-w-7xl mx-auto text-center text-lg">
             &copy; 2024 University Portal. All Rights Reserved. | <a href="#" class="text-portal-light-red hover:underline">Support and Help Desk</a>
         </div>
     </footer>
+
+    <!-- Enrollment Modal -->
+    <div id="admissionModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-2xl shadow-xl text-center max-w-md w-full">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Select Enrollment Type</h2>
+            <p class="text-gray-600 mb-6">Please choose one:</p>
+            <div class="flex justify-center gap-4">
+                <a href="admission.html" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold">New Student</a>
+                <a href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold">Old Student</a>
+
+            </div>
+            <button id="closeAdmissionModal" class="mt-6 bg-portal-red hover:bg-portal-light-red text-white px-6 py-2 rounded-lg font-semibold">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const openButtons = [document.getElementById('openAdmissionModal'), document.getElementById('openAdmissionModal2')];
+        const modal = document.getElementById('admissionModal');
+        const closeBtn = document.getElementById('closeAdmissionModal');
+
+        openButtons.forEach(btn => btn.addEventListener('click', () => modal.classList.remove('hidden')));
+        closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+    </script>
 </body>
 </html>
