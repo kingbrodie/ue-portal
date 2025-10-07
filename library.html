@@ -225,158 +225,63 @@
     </div>
   </div>
 
-  <!-- Book Request Form Modal -->
+  <!-- 📖 Updated Book Request Form Modal -->
   <div id="requestModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
+    <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg overflow-y-auto max-h-[90vh]">
       <h2 class="text-2xl font-bold mb-4">📖 Book Request Form</h2>
       <p class="mb-4">Submit a request for books or materials not yet available in the library.</p>
-      <form id="requestModalForm">
-        <input type="text" placeholder="Book Title" class="w-full p-3 border mb-3 rounded" />
-        <input type="text" placeholder="Author" class="w-full p-3 border mb-3 rounded" />
-        <input type="text" placeholder="Your Name" class="w-full p-3 border mb-3 rounded" />
+      <form id="requestModalForm" class="space-y-4">
+        <input type="text" placeholder="Full Name" class="w-full p-3 border rounded" required />
+        <input type="text" placeholder="Student Number / Faculty Number" class="w-full p-3 border rounded" required />
+        <div>
+          <label class="block font-semibold mb-1">Role</label>
+          <select class="w-full p-3 border rounded" required>
+            <option value="">Select Role</option>
+            <option>Student</option>
+            <option>Faculty</option>
+            <option>Staff</option>
+            <option>Researcher</option>
+          </select>
+        </div>
+        <input type="text" placeholder="Department" class="w-full p-3 border rounded" required />
+        <input type="text" placeholder="Book Title" class="w-full p-3 border rounded" required />
+        <input type="text" placeholder="Author" class="w-full p-3 border rounded" required />
+        <input type="text" placeholder="Page / Chapter" class="w-full p-3 border rounded" />
+        <textarea placeholder="Additional Instructions" class="w-full p-3 border rounded h-24"></textarea>
+        <div>
+          <label class="block font-semibold mb-1">Campus</label>
+          <select class="w-full p-3 border rounded" required>
+            <option value="">Select Campus</option>
+            <option>Manila</option>
+            <option>Caloocan</option>
+          </select>
+        </div>
         <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg">Submit Request</button>
       </form>
       <button onclick="closeModal('requestModal')" class="mt-3 bg-portal-red text-white px-4 py-2 rounded-lg">Close</button>
     </div>
   </div>
 
- <!-- Book an Appointment Modal -->
-<div id="appointmentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
-    <h2 class="text-2xl font-bold mb-4">📅 Book an Appointment</h2>
-    <p class="mb-4">Schedule research consultation or dedicated library desk time.</p>
-    <form id="appointmentModalForm">
-      <input type="text" placeholder="Your Name" class="w-full p-3 border mb-3 rounded" />
-      <input type="email" placeholder="Your Email" class="w-full p-3 border mb-3 rounded" />
-      <input type="date" class="w-full p-3 border mb-3 rounded" />
-      <input type="time" class="w-full p-3 border mb-3 rounded" />
-
-      <p class="font-semibold mb-2">Select Location:</p>
-      <div class="mb-3 space-y-2">
-        <label class="flex items-center space-x-2">
-          <input type="radio" name="appointmentLocation" value="Podcit Building 2nd Floor" class="form-radio" />
-          <span>Podcit Building 2nd Floor</span>
-        </label>
-        <label class="flex items-center space-x-2">
-          <input type="radio" name="appointmentLocation" value="Podcit Building 3rd Floor" class="form-radio" />
-          <span>Podcit Building 3rd Floor</span>
-        </label>
-        <label class="flex items-center space-x-2">
-          <input type="radio" name="appointmentLocation" value="Podcit Building 4th Floor" class="form-radio" />
-          <span>Podcit Building 4th Floor</span>
-        </label>
-        <label class="flex items-center space-x-2">
-          <input type="radio" name="appointmentLocation" value="Lualhati Building 3rd Floor" class="form-radio" />
-          <span>Lualhati Building 3rd Floor</span>
-        </label>
-      </div>
-
-      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg">Book Appointment</button>
-    </form>
-    <button onclick="closeModal('appointmentModal')" class="mt-3 bg-portal-red text-white px-4 py-2 rounded-lg">Close</button>
+  <!-- Appointment Modal -->
+  <div id="appointmentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg">
+      <h2 class="text-2xl font-bold mb-4">📅 Book an Appointment</h2>
+      <p class="mb-4">Schedule a research consultation with a librarian.</p>
+      <form id="appointmentModalForm">
+        <input type="text" placeholder="Full Name" class="w-full p-3 border mb-3 rounded" />
+        <input type="email" placeholder="Email Address" class="w-full p-3 border mb-3 rounded" />
+        <input type="datetime-local" class="w-full p-3 border mb-3 rounded" />
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg">Book Now</button>
+      </form>
+      <button onclick="closeModal('appointmentModal')" class="mt-3 bg-portal-red text-white px-4 py-2 rounded-lg">Close</button>
+    </div>
   </div>
-</div>
 
-
-  <!-- ================== SCRIPTS ================== -->
   <script>
-    // Show/hide "Other" input for curbside pick-up safely
-    const otherRadio = document.getElementById('otherPickupRadio');
-    const otherInput = document.getElementById('otherPickupInput');
-
-    if (otherRadio && otherInput) {
-      otherRadio.addEventListener('change', () => { otherInput.classList.remove('hidden'); });
-      document.querySelectorAll('input[name="pickupLocation"]').forEach(radio => {
-        if (radio.id !== 'otherPickupRadio') {
-          radio.addEventListener('change', () => { otherInput.classList.add('hidden'); });
-        }
-      });
-    }
-
-    // Function to show notifications
-    function alertMessage(message, success = true) {
-      const notification = document.createElement('div');
-      notification.innerHTML = `
-        <div class="fixed top-4 right-4 p-6 rounded-lg shadow-xl z-50 text-xl font-semibold
-                    ${success ? 'bg-green-600 text-white' : 'bg-red-600 text-white'}">
-          ${message}
-        </div>`;
-      document.body.appendChild(notification);
-      setTimeout(() => { notification.remove(); }, 3000);
-    }
-
-    function showAvailability() {
-      const section = document.getElementById('availability-section');
-      section.style.display = 'block';
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function searchBooks() {
-      const query = document.getElementById('book-search').value.trim();
-      const resultsDiv = document.getElementById('book-results');
-
-      if (query.length < 3) {
-        resultsDiv.innerHTML = '<p class="text-xl text-red-500 font-semibold">Please enter at least 3 characters to search.</p>';
-        alertMessage("Please enter at least 3 characters to search.", false);
-        return;
-      }
-
-      const mockBooks = [
-        { title: "Introduction to Computer Science", author: "A. Turing", available: true, callNo: "QA 76.73 T87 2023" },
-        { title: "Linear Algebra Fundamentals", author: "E. Noether", available: true, callNo: "QA 184 N63 2022" },
-        { title: "Philippine History Since 1900", author: "C. Quirino", available: false, callNo: "DS 668 Q8 2019" },
-        { title: "Organic Chemistry: A Modular Approach", author: "L. Pauling", available: true, callNo: "QD 251 P28 2024" }
-      ];
-
-      const filteredBooks = mockBooks.filter(book =>
-        book.title.toLowerCase().includes(query.toLowerCase()) ||
-        book.author.toLowerCase().includes(query.toLowerCase())
-      );
-
-      if (filteredBooks.length === 0) {
-        resultsDiv.innerHTML = `<p class="text-lg text-gray-600">No results found for "<span class="font-bold">${query}</span>".</p>`;
-        alertMessage("No results found.", false);
-        return;
-      }
-
-      let html = '<div class="space-y-4">';
-      filteredBooks.forEach(book => {
-        html += `
-          <div class="p-5 border-2 rounded-xl shadow-lg ${book.available ? 'border-green-500' : 'border-red-500'}">
-            <h3 class="text-2xl font-bold text-gray-800">${book.title}</h3>
-            <p class="text-lg text-gray-600">👤 Author: ${book.author}</p>
-            <p class="text-lg text-gray-600">📑 Call No: ${book.callNo}</p>
-            <p class="text-lg font-semibold ${book.available ? 'text-green-600' : 'text-red-600'}">
-              ${book.available ? '✅ Available' : '❌ Not Available'}
-            </p>
-          </div>
-        `;
-      });
-      html += '</div>';
-      resultsDiv.innerHTML = html;
-    }
-
-    function openModal(id) { document.getElementById(id).classList.remove("hidden"); }
-    function closeModal(id) { document.getElementById(id).classList.add("hidden"); }
-
-    // Handle form submissions with notifications
-    function handleFormSubmission(formId, successMessage) {
-      const form = document.getElementById(formId);
-      if (!form) return;
-
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alertMessage(successMessage, true);
-        form.reset();
-        const modal = form.closest('.hidden');
-        if (modal) modal.id && closeModal(modal.id);
-      });
-    }
-
-    handleFormSubmission('curbsideModalForm', 'Book reserved successfully!');
-    handleFormSubmission('digitalModalForm', 'Digital delivery request sent!');
-    handleFormSubmission('requestModalForm', 'Book request submitted!');
-    handleFormSubmission('appointmentModalForm', 'Appointment booked successfully!');
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+    function showAvailability() { document.getElementById('availability-section').style.display = 'block'; window.scrollTo({ top: document.getElementById('availability-section').offsetTop, behavior: 'smooth' }); }
   </script>
+
 </body>
 </html>
