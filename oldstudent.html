@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Old Student Enrollment - University Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'portal-red': '#B91C1C',
+            'portal-gray': '#F3F4F6'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-portal-gray min-h-screen">
+  <div class="flex flex-col md:flex-row">
+    <!-- Sidebar -->
+    <aside class="bg-portal-red text-white w-full md:w-64 p-6">
+      <h1 class="text-2xl font-bold mb-6">🎓 University Portal</h1>
+      <nav class="space-y-3">
+        <a href="index.html" class="block hover:text-yellow-300">🏠 Home</a>
+        <a href="oldstudent.html" class="block font-semibold text-yellow-300">📘 Old Student Enrollment</a>
+        <a href="library.html" class="block hover:text-yellow-300">📚 Library</a>
+        <a href="payments.html" class="block hover:text-yellow-300">💳 Payments</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">📘 Old Student Enrollment</h2>
+      <p class="mb-6 text-gray-700">Welcome back! Please complete your re-enrollment details below.</p>
+
+      <form class="bg-white p-6 rounded-xl shadow-md">
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <input type="text" placeholder="Student ID" class="p-3 border rounded" required />
+          <input type="text" placeholder="Full Name" class="p-3 border rounded" required />
+          <input type="email" placeholder="Email" class="p-3 border rounded" required />
+          <input type="text" placeholder="Program / Course" class="p-3 border rounded" required />
+        </div>
+
+        <label class="block mb-2 font-semibold">Year Level</label>
+        <select class="w-full p-3 border rounded mb-4">
+          <option value="">Select Year Level</option>
+          <option>1st Year</option>
+          <option>2nd Year</option>
+          <option>3rd Year</option>
+          <option>4th Year</option>
+        </select>
+
+        <label class="block mb-2 font-semibold">Semester</label>
+        <select class="w-full p-3 border rounded mb-4">
+          <option value="">Select Semester</option>
+          <option>1st Semester</option>
+          <option>2nd Semester</option>
+          <option>Summer</option>
+        </select>
+
+        <button type="submit" class="bg-portal-red hover:bg-red-700 text-white px-6 py-2 rounded-lg">Submit Enrollment</button>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
